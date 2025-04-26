@@ -25,7 +25,7 @@
     <!-- 设置苹果设备的图标 -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- 设置网页的 favicon 图标 -->
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="..\assets\\img\favicon.ico">
 </head>
 
 <script>
@@ -36,27 +36,38 @@
 </script>
 
 <script>
-    // 定义网页标题在用户离开和返回时的变化
-    var leaveTitle = '不要走！再看看嘛！'; // 用户离开时显示的标题
-    var backTitle = '♪ Welcome Back ♪ '; // 用户返回时显示的标题
-    var OriginTitile = "Chifishish's Website"; // 原始标题
-    var titleTime; // 定时器变量
+    var titles = {
+        leave: '不要走！再看看嘛！',
+        back: '♪ Welcome Back ♪ ',
+        origin: "Chifishish's Website"
+    };
 
-    // 监听网页的可见性变化事件
+    var titleTime;
+
     document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
-            // 当用户离开网页时，修改标题为 leaveTitle
-            document.title = leaveTitle;
-            clearTimeout(titleTime); // 清除定时器
-        } else {
-            // 当用户返回网页时，修改标题为 backTitle + 原始标题
-            document.title = backTitle + OriginTitile;
-            // 两秒后恢复为原始标题
+            document.title = titles.leave;
+            clearTimeout(titleTime);
             titleTime = setTimeout(function () {
-                document.title = OriginTitile;
-            }, 2000);
+                document.title = titles.origin;
+            }, 1500);
+        } else {
+            document.title = titles.back + titles.origin;
+            titleTime = setTimeout(function () {
+                document.title = titles.origin;
+            }, 1500);
         }
     });
+</script>
+
+<script>
+    if ('visibilityState' in document) {
+        document.addEventListener('visibilitychange', function () {
+            // 你的逻辑
+        });
+    } else {
+        console.warn('浏览器不支持 visibilitychange 事件');
+    }
 </script>
 
 <body>
@@ -179,8 +190,7 @@
         <!-- 页脚信息 -->
         <div class="remark iUp">
             <p class="power">Powered By 
-                <a href="https://github.com/features/actions" target="_blank"> GitHub Actions </a> And 
-                <a href="https://hitokoto.cn/" target="_blank"> Hitokoto </a>
+                <a href="https://github.com/features/actions" target="_blank"> GitHub Actions </a> 
             </p>
         </div>
     </header>
