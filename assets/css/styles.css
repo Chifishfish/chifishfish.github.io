@@ -1,6 +1,16 @@
 /*==================== GOOGLE FONTS 字体====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+/*==================== VANTA BG ====================*/
+#vanta-bg {
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: -1 !important;
+}
+
 /*==================== VARIABLES CSS ====================*/
 :root {
     --header-height: 3rem;
@@ -67,28 +77,6 @@
         --small-font-size: .875rem;
         --smaller-font-size: .813rem;
     }
-}
-
-.blurred-wrapper {
-  height: 100vh;
-  background: herf="../assets/img/background.jfif" center/cover;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  animation: hue 10s infinite alternate;
-}
-
-.blurred-wrapper::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  filter: blur(1rem);
-  transform: scale(1.15);
 }
 
 /*========== Variables Dark theme ==========*/
@@ -175,7 +163,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
